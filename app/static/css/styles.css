@@ -33,6 +33,7 @@
 
 #footer h4 {
     font-weight: normal;
+    font-size: 18px;
 }
 
 
@@ -42,6 +43,7 @@
     text-decoration: none;
     display: block;
     margin-left: 0;
+    font-size: 13px;
 
 }
 
