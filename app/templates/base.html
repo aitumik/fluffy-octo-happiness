@@ -7,13 +7,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Flask Web Application</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    <title>Crookie Monster</title>
   </head>
   <body>
     {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Name of the App</a>
+        <a class="navbar-brand" href="#">Crookie Monster</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,10 +23,13 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">Products</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="#register" class="nav-link">Register</a>
             </li>
           </ul>
         </div>
@@ -34,7 +37,53 @@
     {% endblock navbar %}
 
     {% block content %}
+    <footer id="footer">
+        <div class="container">
+                <div class="container">
+                        <div class="row bottom">
+                            <div class="col-md-3 col-sm-12">
+                                <h4>Company</h4>
+                                <ul>
+                                    <li><a href="/#about">About us</a></li>
+                                    <li><a href="/#investors">Investors</a></li>
+                                    <li><a href="/#blog">Blog</a></li>
+                                    <li><a href="/#careers">Careers</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 col-sm-12">
+                                <h4>Products</h4>
+                                <ul>
+                                    <li><a href="/#webdesign">Webdesign</a></li>
+                                    <li><a href="/#mobileapps">Mobile Apps</a></li>
+                                    <li><a href="/#carpool">CarPool</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 col-sm-12">
+                                <h4>Country</h4>
+                                <ul>
+                                    <li><a href="/#kenya">Kenya</a></li>
+                                    <li><a href="/#rwanda">Rwanda</a></li>
+                                    <li><a href="/#uganda">Uganda</a></li>
+                                    <li><a href="/#nigeria">Nigeria</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 col-sm-12">
+                                <h4>Innovation</h4>
+                                <ul>
+                                    <li><a href="/#AI">AI</a></li>
+                                    <li><a href="/#biocomp">Biocomp</a></li>
+                                    <li><a href="/#robotics">Robotics</a></li>
+                                </ul>
+                            </div>
+                        </div>  
+                    </div>
+        </div>
+    </footer>
     {% endblock content %}
+
+    {% block footer %}
+
+    {% endblock footer %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
