@@ -1,94 +1,116 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
     <title>Crookie Monster</title>
-  </head>
-  <body>
+</head>
+
+<body>
     {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Crookie Monster</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Products</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a href="{{url_for('auth.register')}}" class="nav-link">Register</a>
-            </li>
-          </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Products</a>
+                </li>
+
+                {% if not current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url_for('auth.register')}}" class="nav-link">Register</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="#profile" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url_for('auth.logout')}}" class="nav-link">Logout</a>
+                </li>
+                {% endif %}
+
+            </ul>
         </div>
-      </nav>
+    </nav>
     {% endblock navbar %}
 
     {% block content %}
-    <footer id="footer">
-        <div class="container">
-                <div class="container">
-                        <div class="row bottom">
-                            <div class="col-md-3 col-sm-12">
-                                <h4>Company</h4>
-                                <ul>
-                                    <li><a href="/#about">About us</a></li>
-                                    <li><a href="/#investors">Investors</a></li>
-                                    <li><a href="/#blog">Blog</a></li>
-                                    <li><a href="/#careers">Careers</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-12">
-                                <h4>Products</h4>
-                                <ul>
-                                    <li><a href="/#webdesign">Webdesign</a></li>
-                                    <li><a href="/#mobileapps">Mobile Apps</a></li>
-                                    <li><a href="/#carpool">CarPool</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-12">
-                                <h4>Country</h4>
-                                <ul>
-                                    <li><a href="/#kenya">Kenya</a></li>
-                                    <li><a href="/#rwanda">Rwanda</a></li>
-                                    <li><a href="/#uganda">Uganda</a></li>
-                                    <li><a href="/#nigeria">Nigeria</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-12">
-                                <h4>Innovation</h4>
-                                <ul>
-                                    <li><a href="/#AI">AI</a></li>
-                                    <li><a href="/#biocomp">Biocomp</a></li>
-                                    <li><a href="/#robotics">Robotics</a></li>
-                                </ul>
-                            </div>
-                        </div>  
-                    </div>
-        </div>
-    </footer>
+  
     {% endblock content %}
 
     {% block footer %}
-
+    <footer id="footer">
+            <div class="container">
+                <div class="container">
+                    <div class="row bottom">
+                        <div class="col-md-3 col-sm-12">
+                            <h4>Company</h4>
+                            <ul>
+                                <li><a href="/#about">About us</a></li>
+                                <li><a href="/#investors">Investors</a></li>
+                                <li><a href="/#blog">Blog</a></li>
+                                <li><a href="/#careers">Careers</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <h4>Products</h4>
+                            <ul>
+                                <li><a href="/#webdesign">Webdesign</a></li>
+                                <li><a href="/#mobileapps">Mobile Apps</a></li>
+                                <li><a href="/#carpool">CarPool</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <h4>Country</h4>
+                            <ul>
+                                <li><a href="/#kenya">Kenya</a></li>
+                                <li><a href="/#rwanda">Rwanda</a></li>
+                                <li><a href="/#uganda">Uganda</a></li>
+                                <li><a href="/#nigeria">Nigeria</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                            <h4>Innovation</h4>
+                            <ul>
+                                <li><a href="/#AI">AI</a></li>
+                                <li><a href="/#biocomp">Biocomp</a></li>
+                                <li><a href="/#robotics">Robotics</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     {% endblock footer %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>

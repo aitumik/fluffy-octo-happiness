@@ -1,5 +1,5 @@
 from . import auth
-from flask_login import login_user,logout_user
+from flask_login import login_user,logout_user,login_required
 from flask import request,redirect,url_for,flash,render_template
 from .forms import RegistrationForm,LoginForm
 from app.models import User
@@ -12,7 +12,7 @@ def login():
         u = User.query.filter_by(email=form.email.data).first()
         if u is not None and u.verify_password(form.password.data):
             login_user(u)
-            return redirect(url_for('main.home'))
+            return redirect(url_for('main.index'))
         return redirect(url_for('auth.login'))
     return render_template("auth/login.html",form=form)
 
@@ -27,3 +27,9 @@ def register():
         db.session.add(u)
         return redirect(url_for('auth.login'))
     return render_template("auth/register.html",form=form)
+
+@auth.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('auth.login'))
