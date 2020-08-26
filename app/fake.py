@@ -19,7 +19,7 @@ def users(count=100):
             db.session.commit()
             i += 1
         except IntegrityError:
-            db.session.rollbac()
+            db.session.rollback()
 
 def posts(count=100):
     fake = Faker()
