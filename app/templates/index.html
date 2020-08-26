@@ -1,4 +1,28 @@
 {% extends 'base.html' %}
 
-{% block maincontent %}
-{% endblock maincontent %}
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Monster Crookie</a></li>
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+    </ol>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    {{post.title}}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{post.subtile}}</h5>
+                    <p class="card-text">{{post.body}}</p>
+                    <a href="#" class="btn btn-primary">Read more</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content%}

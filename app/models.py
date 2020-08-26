@@ -12,8 +12,11 @@ class User(db.Model,UserMixin):
 
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(100))
+    username = db.Column(db.String(100),unique=True)
     email = db.Column(db.String(128),unique=True,index=True)
     password_hash = db.Column(db.String(128))
+
+    posts = db.relationship("Post",backref="user",lazy="dynamic")
 
     @property
     def password(self):
@@ -39,3 +42,16 @@ class Product(db.Model):
     
     def __repr__(self):
         return "<Product {}".format(self.name)
+
+class Post(db.Model):
+    __tablename__ = "posts"
+
+    id = db.Column(db.Integer,primary_key=True)
+    title = db.Column(db.String(100),unique=True)
+    subtile = db.Column(db.Text)
+    body = db.Column(db.Text)
+
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+    def __repr__(self):
+        return "<Post {}".format(self.body)
