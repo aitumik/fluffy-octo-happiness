@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block breadcrumb %}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Monster Crookie</a></li>
         <li class="breadcrumb-item"><a href="{{url_for('main.index')}}">Home</a></li>
     </ol>
 </nav>
+{% endblock breadcrumb %}
+{% block content %}
 <div class="container-fluid">
     <div class="row">
         {% for post in posts %}

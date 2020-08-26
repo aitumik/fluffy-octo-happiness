@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block breadcrumb %}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{url_for('main.index')}}">Monster Crookie</a></li>
@@ -9,4 +9,7 @@
 </nav>
 
 
+{% endblock breadcrumb %}
+
+{% block content %}
 {% endblock content %}
