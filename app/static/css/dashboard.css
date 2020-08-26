@@ -19,7 +19,8 @@ body {
     left: 0;
     z-index: 100; /* Behind the navbar */
     padding: 10,vpx 0 0; /* Height of navbar */
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    /* box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1); */
+    box-shadow: 0 5px #888888;
   }
   
   @media (max-width: 767.98px) {
@@ -77,7 +78,7 @@ body {
     padding-bottom: .75rem;
     font-size: 1rem;
     background-color: rgba(0, 0, 0, .25);
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+    box-shadow: inset -1px 0 0 #00000040;
   }
   
   .navbar .navbar-toggler {
