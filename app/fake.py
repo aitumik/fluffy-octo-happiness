@@ -26,6 +26,6 @@ def posts(count=100):
     user_count = User.query.count()
     for i in range(count):
         u = User.query.offset(randint(0,user_count -1 )).first()
-        p = Post(body=fake.text(),title=fake.text()[:20],subtile=fake.text()[:50],user=u)
+        p = Post(body=fake.text(),title=fake.text()[:20],subtile=fake.text()[:50],user=u,created_at=fake.past_date())
         db.session.add(p)
     db.session.commit()

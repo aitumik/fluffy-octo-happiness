@@ -2,6 +2,7 @@ from app import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin,AnonymousUserMixin
 from app import login_manager
+from datetime import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -50,6 +51,7 @@ class Post(db.Model):
     title = db.Column(db.String(100),unique=True)
     subtile = db.Column(db.Text)
     body = db.Column(db.Text)
+    created_at = db.Column(db.DateTime,default=datetime.utcnow)
 
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 

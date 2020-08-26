@@ -5,7 +5,7 @@ from app.models import User,Post
 
 @main.route("/")
 def index():
-	posts = Post.query.all()
+	posts = Post.query.order_by(Post.created_at.desc()).all()[:8]
 	return render_template("index.html",posts=posts)
 
 @main.route("/posts")

@@ -3,8 +3,8 @@
 {% block content %}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Monster Crookie</a></li>
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="/">Monster Crookie</a></li>
+        <li class="breadcrumb-item"><a href="{{url_for('main.index')}}">Home</a></li>
     </ol>
 </nav>
 <div class="container-fluid">
@@ -20,9 +20,11 @@
                 <div class="card-body">
                     <a href="#" class="card-title">{{post.title}}</a>
                     <p class="card-text">
-                        {{post.body[:50]}}
+                        {{post.body }}
                     </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text"><small class="text-muted">Last updated {{post.created_at }}</small></p>
+                    <p class="card-text"><small class="text-muted">Created by updated {{post.user.name }}</small></p>
+
                 </div>
             </div>
         </div>

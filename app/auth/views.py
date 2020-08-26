@@ -32,7 +32,7 @@ def register():
             if u is not None:
                 flash("Use with that email is already registered")
                 return redirect(url_for('auth.register'))
-            u = User(emai=email,name=username,password=password)
+            u = User(email=email,name=username,password=password)
             db.session.add(u)
             flash("User created successfully")
             return redirect(url_for('auth.login'))

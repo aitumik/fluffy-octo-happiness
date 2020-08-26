@@ -10,14 +10,7 @@
     margin-right: 0;
     margin-right: 0;
     color: white;
-    float: none;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
     padding: 20px;
 }
 
-#footer * {
-    display: inline;
-    float: none;
-}
+
