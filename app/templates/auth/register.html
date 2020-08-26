@@ -1,10 +1,48 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% block maincontent %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/auth.css')}}">
+{% endblock css %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+
+{% block content %}
 <div class="container">
-    <div class="col-md-4">'
-        {{wtf.quick_form(form)}}
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <form action="" id="registrationform" method="POST">
+                <fieldset>
+                    <h2 class="form-title">Create your account</h2>
+                    <!-- <h3 class="text-danger form-subtitle">You have no referee</h3> -->
+                    <h3 class="text-success form-subtitle">You were refered by nathan_kimutai</h3>
+
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" placeholder="Enter your username">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Enter email address</label>
+                        <input type="email" name="email" id="email" placeholder="Enter a valid email address">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Enter password</label>
+                        <input type="password" name="pass" placeholder="Enter Password">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Confirm password</label>
+                        <input type="password" name="cpass" placeholder="Confirm Password">
+                    </div>
+                    <input class="bg-dark text-white" type="submit" name="submit" class="submit action-button" value="Register">
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
-{% endblock maincontent %}
+{% endblock content %}

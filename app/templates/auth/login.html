@@ -1,10 +1,40 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% block maincontent %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/auth.css')}}">
+{% endblock css %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+
+{% block content %}
 <div class="container">
-    <div class="col-md-4">'
-        {{wtf.quick_form(form)}}
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <form action="" id="registrationform" method="POST">
+                <fieldset>
+                    <h2 class="form-title">Login to your account</h2>
+                    <h3 class="form-subtitle">Welcome back</h3>
+
+                    <div class="input-group">
+                        <label for="username">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Enter password</label>
+                        <input type="password" name="pass" placeholder="Enter Password">
+                    </div>
+                    <input class="bg-dark text-white" type="submit" name="submit" class="submit action-button" value="Login">
+                    <a href="{{url_for('auth.register')}}">Dont have an account?</a>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
-{% endblock maincontent %}
+{% endblock content %}
