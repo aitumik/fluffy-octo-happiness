@@ -13,6 +13,13 @@ def index():
 def posts():
 	return render_template("posts.html")
 
+@main.route("/post/<post_id>")
+@login_required
+def post(post_id):
+	post = Post.query.get(int(post_id))
+	return render_template("post.html",post=post)
+
+
 @main.route("/")
 def admin():
 	return render_template("admin.html")
