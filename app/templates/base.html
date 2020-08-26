@@ -35,20 +35,27 @@
         </ul>
         {% if not current_user.is_authenticated %}
         <form class="form-inline my-2 my-lg-0">
-          <a class="btn btn-success my-2 my-sm-0" href="{{url_for('auth.register')}}">Register</a>
-          <a class="btn btn-success my-2 my-sm-0" href="{{url_for('auth.login')}}" >Login</a>
+          <a class="btn btn-success btn-sm my-2 my-sm-0" href="{{url_for('auth.register')}}">Register</a>
+          <a class="btn btn-success btn-sm my-2 my-sm-0" href="{{url_for('auth.login')}}" >Login</a>
         </form>
         {% else %}
         <form class="form-inline my-2 my-lg-0">
-          <a class="btn btn-success my-2 my-sm-0" href="{{url_for('auth.logout')}}">Logout</a>
+          <a class="btn btn-success btn-sm my-2 my-sm-0" href="{{url_for('auth.logout')}}">Logout</a>
         </form>
         {% endif %}
       </div>
     </nav>
     {% endblock navbar %}
+    <div class="container">
+      {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning" role="alert">
+          {{message}}
+        </div>
+      {% endfor %}
+    </div>
     {% block  content %}
     {% endblock content %}
-
+   
     {% block footer %}
     <footer id="footer">
       &copy; 2020 Robert Komen

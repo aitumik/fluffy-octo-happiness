@@ -7,26 +7,38 @@ from app import db
 
 @auth.route("/login",methods=['GET','POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        u = User.query.filter_by(email=form.email.data).first()
-        if u is not None and u.verify_password(form.password.data):
+    if request.method == "POST":
+        username = request.form.get("email",None)
+        email = request.form.get("email",None)
+        password = request.form.get("pass",None)
+        if email is None or password is None:
+            flash("There is an error in your fields")
+            return redirect(url_for('auth.login'))
+        u = User.query.filter_by(email=email).first()
+        if u is not None and u.verify_password(password):
             login_user(u)
             return redirect(url_for('main.index'))
-        return redirect(url_for('auth.login'))
-    return render_template("auth/login.html",form=form)
+    return render_template("auth/login.html")
 
 @auth.route("/register",methods=['GET','POST'])
 def register():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        u = User.query.filter_by(email=form.email.data).first()
-        if u is not None:
-            return redirect(url_for('auth.register'))
-        u = User(name=form.name.data,email=form.email.data,password=form.password.data)
-        db.session.add(u)
-        return redirect(url_for('auth.login'))
-    return render_template("auth/register.html",form=form)
+    if request.method == 'POST':
+        username = request.form.get("username",None)
+        email = request.form.get("email",None)
+        password = request.form.get("pass",None)
+        cpass = request.form.get("cpass",None)
+        if username is not None and email is not None and password == password and password != None:
+            u = User.query.filter_by(email=email).first()
+            if u is not None:
+                flash("Use with that email is already registered")
+                return redirect(url_for('auth.register'))
+            u = User(emai=email,name=username,password=password)
+            db.session.add(u)
+            flash("User created successfully")
+            return redirect(url_for('auth.login'))
+        flash("all fields are required")
+        return redirect(url_for('auth.register'))
+    return render_template("auth/register.html")
 
 @auth.route("/logout")
 @login_required
