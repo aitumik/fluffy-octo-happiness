@@ -51,6 +51,7 @@ class Post(db.Model):
     title = db.Column(db.String(100),unique=True)
     subtile = db.Column(db.Text)
     body = db.Column(db.Text)
+    image_url = db.Column(db.String(255))
     created_at = db.Column(db.DateTime,default=datetime.utcnow)
 
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))

@@ -22,7 +22,7 @@ body {
     margin: 0 10%; */
 }
 
-#registrationform input {
+#registrationform input,#registrationform textarea {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 3px;
