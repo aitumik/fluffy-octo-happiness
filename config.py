@@ -7,6 +7,7 @@ class Config:
 
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hardtoguessstring'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    POSTS_PER_PAGE = 10
 
     @staticmethod
     def init_app(app):
